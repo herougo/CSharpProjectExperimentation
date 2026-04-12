@@ -10,8 +10,7 @@ namespace Utility.WebForms.Pages.About.Boilerplate
 {
     public class AboutPage : WebFormsPage
     {
-        public AboutPageState State = new AboutPageState();
-        public PageLoadResult PageLoadResult = null;
+        protected AboutPageState State = new AboutPageState();
 
         protected override PageLoadResult PageLoadImpl(WebFormsPageContext pageContext)
         {

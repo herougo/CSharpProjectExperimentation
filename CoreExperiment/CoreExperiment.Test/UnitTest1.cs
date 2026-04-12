@@ -1,10 +1,11 @@
 ﻿using CoreExperiment.Core;
+using Moq;
 
 namespace CoreExperiment.Test
 {
     public class UnitTest1
     {
-        private readonly ICustomLogger _logger;
+        private readonly Mock<ICustomLogger> _logger;
 
         public UnitTest1()
         {
@@ -12,9 +13,19 @@ namespace CoreExperiment.Test
         }
 
         [Fact]
-        public void Test1()
+        public void Test_EmailValidator_ShouldReturnTrue_WhenValidEmail()
         {
+            // Arrange
+            var validator = new EmailValidator(_logger.Object);
+            string email = "joe@example.com";
 
+            // Act
+            bool result = validator.IsEmail(email);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Single(_logger.Invocations);
+            Assert.Equal(_logger.Invocations[0].Arguments[0], "IsEmail");
         }
     }
 }

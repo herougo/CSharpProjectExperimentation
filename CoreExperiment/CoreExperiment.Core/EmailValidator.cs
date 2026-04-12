@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoreExperiment.Core
 {
-    internal class EmailValidator
+    public class EmailValidator
     {
         private readonly ICustomLogger _logger;
 

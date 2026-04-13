@@ -10,7 +10,7 @@ namespace CoreExperiment.Core.GlobalState
 
         Caution
           - Be careful with modifying cache values. For example, if you return a mutable List, then
-            modify the list, that will affect the cache. Instead, use an ImmutableList
+            modify the list, that will affect the cache.
           - This implementation is meant for storing a manageable amount of global variables as a legacy
             replacement for static variables (it uses NeverRemove as the cache eviction policy).
         */

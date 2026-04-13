@@ -9,8 +9,8 @@ namespace CoreExperiment.Core.GlobalState
 {
     internal interface ICountryGlobalState
     {
-        ImmutableList<string>? GetCountryCodes();
+        List<string>? GetCountryCodes();
 
-        void SetCountryCodes(ImmutableList<string> countryCodes);
+        void SetCountryCodes(List<string> countryCodes);
     }
 }

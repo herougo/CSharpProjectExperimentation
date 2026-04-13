@@ -21,12 +21,12 @@ namespace CoreExperiment.Core.GlobalState
             _cache = cache;
         }
 
-        public ImmutableList<string>? GetCountryCodes()
+        public List<string>? GetCountryCodes()
         {
-            return _cache.Get<ImmutableList<string>>(CountryGlobalStateKeys.CountryCodes);
+            return _cache.Get<List<string>>(CountryGlobalStateKeys.CountryCodes);
         }
 
-        public void SetCountryCodes(ImmutableList<string> countryCodes)
+        public void SetCountryCodes(List<string> countryCodes)
         {
             _cache.Set(CountryGlobalStateKeys.CountryCodes, countryCodes);
         }

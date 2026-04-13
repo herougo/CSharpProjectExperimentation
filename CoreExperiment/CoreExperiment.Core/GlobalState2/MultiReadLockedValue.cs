@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CoreExperiment.Core.GlobalState2
 {
-    internal class MultiReadLockValue<T>
+    internal class MultiReadLockValue<T> : IDisposable
     {
         // Represents a lock that is used to manage access to a resource, allowing multiple
         // threads for reading or exclusive access for writing.
-        private readonly ReaderWriterLockSlim _lock = new(LockRecursionPolicy.NoRecursion);
+        private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
         private T _value;
 
         public MultiReadLockValue(T value) { _value = value; }
@@ -40,6 +40,11 @@ namespace CoreExperiment.Core.GlobalState2
             {
                 _lock.ExitWriteLock();
             }
+        }
+
+        public void Dispose()
+        {
+            _lock.Dispose();
         }
     }
 }

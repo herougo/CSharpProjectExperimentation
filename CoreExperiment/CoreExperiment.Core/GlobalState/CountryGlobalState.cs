@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,24 +9,24 @@ namespace CoreExperiment.Core.GlobalState
 {
     internal static class CountryGlobalStateKeys
     {
-        public const string CountryCodes = "country_codes";
+        public const string CountryCodes = nameof(CountryGlobalState) + ":" + nameof(CountryCodes);
     }
 
     internal class CountryGlobalState : ICountryGlobalState
     {
-        private readonly ICacheWrapper _cache;
+        private readonly IGlobalStateManager _cache;
 
-        public CountryGlobalState(ICacheWrapper cache)
+        public CountryGlobalState(IGlobalStateManager cache)
         {
             _cache = cache;
         }
 
-        public List<string>? GetCountryCodes()
+        public ImmutableList<string>? GetCountryCodes()
         {
-            return (List<string>?)_cache.Get(CountryGlobalStateKeys.CountryCodes);
+            return _cache.Get<ImmutableList<string>>(CountryGlobalStateKeys.CountryCodes);
         }
 
-        public void SetCountryCodes(List<string> countryCodes)
+        public void SetCountryCodes(ImmutableList<string> countryCodes)
         {
             _cache.Set(CountryGlobalStateKeys.CountryCodes, countryCodes);
         }

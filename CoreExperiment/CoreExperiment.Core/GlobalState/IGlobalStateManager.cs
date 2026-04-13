@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CoreExperiment.Core.GlobalState
 {
-    internal interface ICacheWrapper
+    internal interface IGlobalStateManager
     {
-        public object? Get(string key);
+        T? Get<T>(string key);
 
-        public void Set(string key, object value);
+        void Set<T>(string key, T value);
     }
 }

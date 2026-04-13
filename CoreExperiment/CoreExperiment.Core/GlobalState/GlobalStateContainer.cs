@@ -10,9 +10,9 @@ namespace CoreExperiment.Core.GlobalState
     {
         public ICountryGlobalState Country { get; }
 
-        public GlobalStateContainer(ICacheWrapper cacheWrapper)
+        public GlobalStateContainer(ICountryGlobalState countryState)
         {
-            Country = new CountryGlobalState(cacheWrapper);
+            Country = countryState;
         }
     }
 }
